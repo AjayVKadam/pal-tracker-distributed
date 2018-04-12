@@ -15,6 +15,5 @@ public class AllocationsAppTest {
         String response = new RestTemplate().getForObject("http://localhost:8181/allocations?projectId=0", String.class);
 
         assertThat(response).isEqualTo("[]");
-
     }
 }
