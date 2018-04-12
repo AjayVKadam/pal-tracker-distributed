@@ -89,6 +89,9 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - get: allocations-artifacts
+    trigger: true
+    passed: [build]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
     params:
@@ -102,8 +105,7 @@ jobs:
       DATABASE_USERNAME: {{allocations-database-username}}
       DATABASE_PASSWORD: {{allocations-database-password}}
       LOCATION: {{allocations-database-location}}
-  - get: allocations-artifacts
-    trigger: false
+
   - put: cf
     params:
       manifest: pal-tracker/manifest-allocations.yml
@@ -115,6 +117,9 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - get: backlog-artifacts
+    trigger: true
+    passed: [build]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
     params:
@@ -128,8 +133,6 @@ jobs:
       DATABASE_USERNAME: {{backlog-database-username}}
       DATABASE_PASSWORD: {{backlog-database-password}}
       LOCATION: {{backlog-database-location}}
-  - get: backlog-artifacts
-    trigger: false
   - put: cf
     params:
       manifest: pal-tracker/manifest-backlog.yml
@@ -141,6 +144,9 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - get: registration-artifacts
+    trigger: true
+    passed: [build]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
     params:
@@ -154,8 +160,6 @@ jobs:
       DATABASE_USERNAME: {{registration-database-username}}
       DATABASE_PASSWORD: {{registration-database-password}}
       LOCATION: {{registration-database-location}}
-  - get: registration-artifacts
-    trigger: false
   - put: cf
     params:
       manifest: pal-tracker/manifest-registration.yml
@@ -167,6 +171,9 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - get: timesheets-artifacts
+    trigger: true
+    passed: [build]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
     params:
@@ -180,8 +187,6 @@ jobs:
       DATABASE_USERNAME: {{timesheets-database-username}}
       DATABASE_PASSWORD: {{timesheets-database-password}}
       LOCATION: {{timesheets-database-location}}
-  - get: timesheets-artifacts
-    trigger: false
   - put: cf
     params:
       manifest: pal-tracker/manifest-timesheets.yml
