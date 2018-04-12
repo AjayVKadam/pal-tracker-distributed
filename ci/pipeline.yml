@@ -89,6 +89,18 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - task: migrate database
+    file: pal-tracker-distributed/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: {{cf-api-url}}
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_ORG: {{cf-org}}
+      CF_SPACE: sandbox
+      MYSQL_IP: {{mysql-ip}}
+      DATABASE_NAME: {{allocations-database-name}}
+      DATABASE_USERNAME: {{allocations-database-username}}
+      DATABASE_PASSWORD: {{allocations-database-password}}
   - get: allocations-artifacts
     trigger: false
   - put: cf
@@ -102,6 +114,18 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - task: migrate database
+    file: pal-tracker-distributed/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: {{cf-api-url}}
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_ORG: {{cf-org}}
+      CF_SPACE: sandbox
+      MYSQL_IP: {{mysql-ip}}
+      DATABASE_NAME: {{backlog-database-name}}
+      DATABASE_USERNAME: {{backlog-database-username}}
+      DATABASE_PASSWORD: {{backlog-database-password}}
   - get: backlog-artifacts
     trigger: false
   - put: cf
@@ -115,6 +139,18 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - task: migrate database
+    file: pal-tracker-distributed/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: {{cf-api-url}}
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_ORG: {{cf-org}}
+      CF_SPACE: sandbox
+      MYSQL_IP: {{mysql-ip}}
+      DATABASE_NAME: {{registration-database-name}}
+      DATABASE_USERNAME: {{registration-database-username}}
+      DATABASE_PASSWORD: {{registration-database-password}}
   - get: registration-artifacts
     trigger: false
   - put: cf
@@ -128,6 +164,18 @@ jobs:
   - get: pal-tracker
     passed: [build]
     trigger: true
+  - task: migrate database
+    file: pal-tracker-distributed/ci/migrateDatabase.yml
+    params:
+      CF_API_URL: {{cf-api-url}}
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_ORG: {{cf-org}}
+      CF_SPACE: sandbox
+      MYSQL_IP: {{mysql-ip}}
+      DATABASE_NAME: {{timesheets-database-name}}
+      DATABASE_USERNAME: {{timesheets-database-username}}
+      DATABASE_PASSWORD: {{timesheets-database-password}}
   - get: timesheets-artifacts
     trigger: false
   - put: cf
